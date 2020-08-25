@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinDev.Business.OpenXml;
+using WinDev.Common.DataObjects;
 
 namespace WinDev.OpenXmlDemonstrator
 {
@@ -35,7 +36,22 @@ namespace WinDev.OpenXmlDemonstrator
             {
                 ExcelManager excelManager = new ExcelManager();
                 //method to read energy plus error message from files and generate excel file for the error messages
-                excelManager.ExportDirectoryHierarchy(txtDirectoryPath.Text, txtExportPath.Text);
+                Func<Files, bool> exclusionFilter = (Files f) => (f.hasChildren && (f.name.ToLower() == "bin"
+                || f.name.ToLower() == "obj"                
+                || f.name.ToLower() == "properties"
+                || f.name.ToLower() == ".vs"
+                || f.name.ToLower() == "mymodules"
+                || f.name.ToLower() == "prebuild_keepthisfirstinbuildorder"
+                || f.name.ToLower() == "samplecode"
+                || f.name.ToLower() == "thirdpartylibraries"
+                || f.name.ToLower() == "packages"
+                || f.name.ToLower() == "tests"
+                || f.name.ToLower() == "templates"
+                || f.name.ToLower() == "help"
+                || f.name.ToLower() == "images"
+                || f.name.ToLower() == "geomlibtests"
+                ));
+                excelManager.ExportDirectoryHierarchy(txtDirectoryPath.Text, txtExportPath.Text, exclusionFilter);
             }
             catch (Exception ex)
             {

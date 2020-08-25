@@ -64,6 +64,7 @@
             this.txtDirectoryPath.Name = "txtDirectoryPath";
             this.txtDirectoryPath.Size = new System.Drawing.Size(407, 20);
             this.txtDirectoryPath.TabIndex = 5;
+            this.txtDirectoryPath.Text = "D:\\DevWorkSpaces\\DA\\Simergy_TFS\\Simergy\\Dev_3_3";
             // 
             // btnGetFiles
             // 
@@ -101,7 +102,7 @@
             this.txtExportPath.Name = "txtExportPath";
             this.txtExportPath.Size = new System.Drawing.Size(409, 20);
             this.txtExportPath.TabIndex = 12;
-            this.txtExportPath.Text = "D:\\";
+            this.txtExportPath.Text = "D:\\FolderStructure.xlsx";
             // 
             // Form1
             // 

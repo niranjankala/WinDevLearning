@@ -98,6 +98,10 @@
       <Project>{29C305B3-1BF4-402A-BDF6-F1E989B7C669}</Project>
       <Name>WinDev.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WinDev.Common\WinDev.Common.csproj">
+      <Project>{384A7BF7-FDB3-40B2-97D4-AB23E6FE84EB}</Project>
+      <Name>WinDev.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

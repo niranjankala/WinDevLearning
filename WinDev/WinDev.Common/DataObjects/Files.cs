@@ -10,11 +10,18 @@ namespace WinDev.Common.DataObjects
     {
         public int column;
         public string name;
+        public bool hasChildren;
 
         public Files(string name, int column)
         {
             this.column = column;
             this.name = name;
+        }
+        public Files(string name, int column, bool isDirectory)
+        {
+            this.column = column;
+            this.name = name;
+            this.hasChildren = isDirectory;
         }
 
         public override string ToString()
