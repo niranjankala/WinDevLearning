@@ -12,9 +12,9 @@ using WinDev.Common.DataObjects;
 
 namespace WinDev.OpenXmlDemonstrator
 {
-    public partial class Form1 : Form
+    public partial class DirectoryHierarchyExporter : Form
     {
-        public Form1()
+        public DirectoryHierarchyExporter()
         {
             InitializeComponent();
         }

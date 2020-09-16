@@ -1,6 +1,6 @@
 ﻿namespace WinDev.OpenXmlDemonstrator
 {
-    partial class Form1
+    partial class DirectoryHierarchyExporter
     {
         /// <summary>
         /// Required designer variable.
