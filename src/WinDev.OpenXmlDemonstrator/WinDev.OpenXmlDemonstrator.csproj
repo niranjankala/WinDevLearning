@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.5.2.0\lib\net461\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.11\lib\net45\log4net.dll</HintPath>
@@ -125,6 +125,10 @@
     <ProjectReference Include="..\WinDev.Common\WinDev.Common.csproj">
       <Project>{384A7BF7-FDB3-40B2-97D4-AB23E6FE84EB}</Project>
       <Name>WinDev.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinDev\WinDev.Framework.csproj">
+      <Project>{a6bfb812-dbfb-4cde-8bc9-ff34d03d19b2}</Project>
+      <Name>WinDev.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

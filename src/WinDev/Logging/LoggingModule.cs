@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using Autofac.Core;
+using Autofac.Core.Registration;
 using Module = Autofac.Module;
 
 namespace WinDev.Logging
@@ -36,10 +37,23 @@ namespace WinDev.Logging
             // call CreateLogger in response to the request for an ILogger implementation
             moduleBuilder.Register(CreateLogger).As<ILogger>().InstancePerDependency();
         }
-
-        protected override void AttachToComponentRegistration(IComponentRegistry componentRegistry, IComponentRegistration registration)
+        protected override void AttachToComponentRegistration(IComponentRegistryBuilder componentRegistry, IComponentRegistration registration)
         {
+
             var implementationType = registration.Activator.LimitType;
+
+
+            registration.Preparing +=
+                 (sender, args) =>
+                 {
+                     var forType = args.Component.Activator.LimitType;
+
+                     var logParameter = new Autofac.Core.ResolvedParameter(
+                         (p, c) => p.ParameterType == typeof(ILogger),
+                         (p, c) => c.Resolve<ILogger>(TypedParameter.From(forType)));
+
+                     args.Parameters = args.Parameters.Union(new[] { logParameter });
+                 };
 
             // build an array of actions on this type to assign loggers to member properties
             var injectors = BuildLoggerInjectors(implementationType).ToArray();
@@ -48,7 +62,7 @@ namespace WinDev.Logging
             if (!injectors.Any())
                 return;
 
-            // otherwise, whan an instance of this component is activated, inject the loggers on the instance
+            // otherwise, when an instance of this component is activated, inject the loggers on the instance
             registration.Activated += (s, e) =>
             {
                 foreach (var injector in injectors)
